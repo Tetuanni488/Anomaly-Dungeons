@@ -1,32 +1,47 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://level_env.tres" type="Environment" id=3]
+[ext_resource path="res://textures/lego/TactilePaving002_1K_Roughness.png" type="Texture" id=4]
+[ext_resource path="res://textures/lego/TactilePaving002_1K_NormalGL.png" type="Texture" id=5]
+[ext_resource path="res://textures/lego/TactilePaving002_1K_Color.png" type="Texture" id=6]
+[ext_resource path="res://blocksLibrary.tres" type="MeshLibrary" id=7]
 
 [sub_resource type="BoxShape" id=1]
 
 [sub_resource type="CubeMesh" id=2]
-size = Vector3( 50, 2, 50 )
+size = Vector3( 52, 2, 52 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.996078, 0.32549, 0, 1 )
+albedo_texture = ExtResource( 6 )
+roughness_texture = ExtResource( 4 )
+normal_enabled = true
+normal_scale = 5.0
+normal_texture = ExtResource( 5 )
+uv1_scale = Vector3( 0.2, 0.2, 0.2 )
+uv1_triplanar = true
 
 [sub_resource type="CubeMesh" id=3]
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=8]
 
 [node name="Level" type="Spatial"]
 
 [node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 25, 0, 0, 0, 1, 0, 0, 0, 25, 0, 0, 0 )
+transform = Transform( 26, 0, 0, 0, 1, 0, 0, 0, 26, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
 mesh = SubResource( 2 )
-material/0 = null
+material/0 = SubResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 script = ExtResource( 2 )
 
 [node name="CameraTarget" type="Spatial" parent="Player"]
@@ -40,7 +55,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
-shape = SubResource( 4 )
+shape = SubResource( 8 )
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.145782, 14.2726, 33.2884 )
@@ -53,3 +68,14 @@ enabled = true
 transform = Transform( 1, 0, 0, 0, -0.598562, 0.801076, 0, -0.801076, -0.598562, 0.0190887, 16.9946, -0.0398445 )
 light_energy = 0.413
 shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 7 )
+cell_octant_size = 1
+data = {
+"cells": PoolIntArray( 12, 0, 327681, 65523, 0, 327681, 12, 1, 327681, 65523, 1, 327681, 12, 2, 327681, 65523, 2, 327681, 12, 3, 327681, 65523, 3, 327681, 12, 4, 327681, 65523, 4, 327681, 12, 5, 327681, 65523, 5, 327681, 12, 6, 327681, 65523, 6, 327681, 12, 7, 327681, 65523, 7, 327681, 12, 8, 327681, 65523, 8, 327681, 12, 9, 327681, 65523, 9, 327681, 12, 10, 327681, 65523, 10, 327681, 12, 11, 327681, 65523, 11, 327681, 0, 12, 327681, 1, 12, 327681, 2, 12, 327681, 3, 12, 327681, 4, 12, 327681, 5, 12, 327681, 6, 12, 327681, 7, 12, 327681, 8, 12, 327681, 9, 12, 327681, 10, 12, 327681, 11, 12, 327681, 12, 12, 327681, 65523, 12, 327681, 65524, 12, 327681, 65525, 12, 327681, 65526, 12, 327681, 65527, 12, 327681, 65528, 12, 327681, 65529, 12, 327681, 65530, 12, 327681, 65531, 12, 327681, 65532, 12, 327681, 65533, 12, 327681, 65534, 12, 327681, 65535, 12, 327681, 0, 65522, 327681, 1, 65522, 327681, 2, 65522, 327681, 3, 65522, 327681, 4, 65522, 327681, 5, 65522, 327681, 6, 65522, 327681, 7, 65522, 327681, 8, 65522, 327681, 9, 65522, 327681, 10, 65522, 327681, 11, 65522, 327681, 12, 65522, 327681, 65523, 65522, 327681, 65524, 65522, 327681, 65525, 65522, 327681, 65526, 65522, 327681, 65527, 65522, 327681, 65528, 65522, 327681, 65529, 65522, 327681, 65530, 65522, 327681, 65531, 65522, 327681, 65532, 65522, 327681, 65533, 65522, 327681, 65534, 65522, 327681, 65535, 65522, 327681, 12, 65523, 327681, 65523, 65523, 327681, 12, 65524, 327681, 65523, 65524, 327681, 12, 65525, 327681, 65523, 65525, 327681, 12, 65526, 327681, 65523, 65526, 327681, 12, 65527, 327681, 65523, 65527, 327681, 12, 65528, 327681, 65523, 65528, 327681, 12, 65529, 327681, 65523, 65529, 327681, 12, 65530, 327681, 65523, 65530, 327681, 12, 65531, 327681, 65523, 65531, 327681, 12, 65532, 327681, 65523, 65532, 327681, 12, 65533, 327681, 65523, 65533, 327681, 12, 65534, 327681, 65523, 65534, 327681, 12, 65535, 327681, 65523, 65535, 327681 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
