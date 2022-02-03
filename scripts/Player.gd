@@ -32,5 +32,6 @@ func _physics_process(delta):
 		$MeshInstance.rotate_z(deg2rad(ROT_SPEED))
 	else:
 		player.velocity.z = lerp(player.velocity.z,0,0.1)
+		
 	
 	move_and_slide(player.velocity)
