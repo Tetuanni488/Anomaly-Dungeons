@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/dynamicFont1.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/PlayButton.gd" type="Script" id=2]
@@ -10,6 +10,9 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=2]
 size = 75
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.105882, 0.105882, 0.105882, 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -46,6 +49,7 @@ margin_top = 327.0
 margin_right = 896.0
 margin_bottom = 455.0
 custom_fonts/font = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
 text = "PLAY"
 script = ExtResource( 2 )
 __meta__ = {

@@ -3,9 +3,11 @@ extends KinematicBody
 const PLAYER_SPEED = 6
 const ROT_SPEED = 7
 
+signal life_changed
+
 var player = {
 	velocity = Vector3(0,0,0),
-	life = 3
+	lifes = 3
 }
 
 func _ready():
@@ -40,6 +42,7 @@ func _physics_process(delta):
 
 func _on_virus_body_entered(body):
 	if body.name == "Player":
-		player.life -= 1
-		if player.life == 0:
+		player.lifes -= 1
+		emit_signal("life_changed",player.lifes)
+		if player.lifes == 0:
 			get_tree().change_scene("res://gameOver.tscn")
