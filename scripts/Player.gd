@@ -4,7 +4,8 @@ const PLAYER_SPEED = 6
 const ROT_SPEED = 7
 
 var player = {
-	velocity = Vector3(0,0,0)
+	velocity = Vector3(0,0,0),
+	life = 3
 }
 
 func _ready():
@@ -35,3 +36,10 @@ func _physics_process(delta):
 		
 	
 	move_and_slide(player.velocity)
+
+
+func _on_virus_body_entered(body):
+	if body.name == "Player":
+		player.life -= 1
+		if player.life == 0:
+			get_tree().change_scene("res://gameOver.tscn")
