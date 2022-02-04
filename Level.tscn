@@ -207,16 +207,19 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 1.2, 0 )
 
 [node name="coin" parent="Coins/CoinHolder" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="CoinHolder2" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8, 1.2, 8.2 )
 
 [node name="coin" parent="Coins/CoinHolder2" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="CoinHolder3" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4, 1.2, -11.9 )
 
 [node name="coin" parent="Coins/CoinHolder3" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
 [connection signal="life_changed" from="Player" to="Control/LifeCounter" method="_on_Player_life_changed"]
 [connection signal="body_entered" from="Virus1" to="Player" method="_on_virus_body_entered"]
